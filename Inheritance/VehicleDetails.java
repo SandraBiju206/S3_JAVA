@@ -1,23 +1,23 @@
 import java.util.Scanner;
 import java.time.Year;
- class Vehicle {
+class Vehicle {
     String brand;
     String model;
     int year;
     double basePrice;
-    Vehicle(String brand, String model, int year, double basePrice) {
+Vehicle(String brand, String model, int year, double basePrice) {
         this.brand = brand;
         this.model = model;
         this.year = year;
         this.basePrice = basePrice;
     }
-    void displayInfo() {
+void displayInfo() {
         System.out.println("Brand " + brand);
         System.out.println("Model " + model);
         System.out.println("Year " + year);
         System.out.println("BasePrice " + basePrice);
     }
-    void calculateResaleValue() {
+void calculateResaleValue() {
         int currentYear = Year.now().getValue();
         int age = currentYear - year;
         double Resalevalue = basePrice * Math.pow(0.85, age);
@@ -26,20 +26,20 @@ import java.time.Year;
 }
 class Car extends Vehicle {
     int numberofDoors;
-    Car(String brand, String model, int year, double basePrice, int numberofDoors) {
+Car(String brand, String model, int year, double basePrice, int numberofDoors) {
         super(brand, model, year, basePrice);
         this.numberofDoors = numberofDoors;
     }
-    void calculateInsurance() {
-        double Insurance = 0.05 * basePrice + 1000 * numberofDoors;
-        System.out.println(" Insurance: " + Insurance);
+void calculateInsurance() {
+        double Insurance = 5000* basePrice + 1000 * numberofDoors;
+        System.out.println("Insurance: "+Insurance);
     }
-    void calculateMaintenanceCost() {
+ void calculateMaintenanceCost() {
         int age = Year.now().getValue() - year;
         double MaintenanceCost = 3000 * age + 500 * numberofDoors;
-        System.out.println("  Maintenance Cost: " + MaintenanceCost);
+        System.out.println("Maintenance Cost: "+MaintenanceCost);
     }
-    void CarDetails() {
+void CarDetails() {
         displayInfo();
         System.out.println("Number of Doors : " + numberofDoors);
         calculateInsurance();
@@ -49,30 +49,30 @@ class Car extends Vehicle {
 }
 class Motorcycle extends Vehicle {
     boolean hasSidecar;
-    Motorcycle(String brand, String model, int year, double basePrice, boolean hasSidecar) {
+Motorcycle(String brand, String model, int year, double basePrice, boolean hasSidecar) {
         super(brand, model, year, basePrice);
         this.hasSidecar = hasSidecar;
     }
-    void calculateInsurance() {
+ void calculateInsurance() {
         double Insurance;
         if (hasSidecar == true) {
-            Insurance = 0.025 * basePrice + 1500;
+        Insurance = 2500 * basePrice + 1500;
         } else {
-            Insurance = 0.025 * basePrice + 1000;
+        Insurance = 2500 * basePrice + 1000;
         }
         System.out.println("Insurance: " + Insurance);
     }
-    void calculateMaintenanceCost() {
+void calculateMaintenanceCost() {
         int age = Year.now().getValue() - year;
         double MaintenanceCost;
         if (hasSidecar == true) {
-            MaintenanceCost = 2000 * age + 1000;
+        MaintenanceCost = 2000 * age + 1000;
         } else {
-            MaintenanceCost = 2000 * age + 500;
+        MaintenanceCost = 2000 * age + 500;
         }
-        System.out.println("  Maintenance Cost: " + MaintenanceCost);
+        System.out.println("Maintenance Cost: " + MaintenanceCost);
     }
-    void MotorcycleDetails() {
+void MotorcycleDetails() {
         displayInfo();
         System.out.println("Side car : " + hasSidecar);
         calculateInsurance();
